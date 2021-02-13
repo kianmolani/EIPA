@@ -9,6 +9,8 @@ G = sparse(nx*ny,nx*ny);
 
 %% plot G matrix
 
+delta_squared = 1;
+
 for i=1:nx
     
     for j=1:ny
@@ -22,8 +24,8 @@ for i=1:nx
             
         else % for bulk nodes (derived from FD equation)
             
-            G(n,n) = -4;
-            G(n,n+1) = 1; G(n,n-1) = 1; G(n,n+ny) = 1; G(n,n-ny) = 1;
+            G(n,n) = -4 / delta_squared;
+            G(n,n+1) = 1 / delta_squared; G(n,n-1) = 1 / delta_squared; G(n,n+ny) = 1 / delta_squared; G(n,n-ny) = 1 / delta_squared;
             
         end
     end
